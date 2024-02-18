@@ -5,7 +5,7 @@ import { login } from '@/service/login'
 const formRef = ref()
 
 const rules = reactive({
-  account: [
+  username: [
     { required: true, message: '请输入账号', trigger: 'change' }
   ],
   password: [
@@ -13,7 +13,7 @@ const rules = reactive({
   ]
 })
 const form = reactive({
-  account: '',
+  username: '',
   password: ''
 })
 const submit = () => {
@@ -32,8 +32,8 @@ const submit = () => {
   <div class="login-container">
     <div class="login-logo">logo</div>
     <el-form :model="form" :rules="rules" ref="formRef">
-      <el-form-item prop="account">
-        <el-input v-model="form.account" placeholder="账号：account" />
+      <el-form-item prop="username">
+        <el-input v-model="form.username" placeholder="账号：username" />
       </el-form-item>
       <el-form-item prop="password">
         <el-input v-model="form.password" placeholder="密码：password" type="password" />
