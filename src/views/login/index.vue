@@ -14,15 +14,18 @@ const rules = reactive({
 })
 const form = reactive({
   username: '',
-  password: ''
+  password: '',
+  autoLogin: true
 })
 const submit = () => {
   formRef.value.validate(isValid => {
     if (isValid) {
       login(form).then(res => {
-        console.log(res)
+        if (res.code === 0) {
+          return ElMessage.success('登录成功')
+        }
+        ElMessage.error('账号或密码错误！')
       })
-      // console.log(2132)
     }
   })
 }
@@ -36,16 +39,16 @@ const submit = () => {
         <el-input v-model="form.username" placeholder="账号：username" />
       </el-form-item>
       <el-form-item prop="password">
-        <el-input v-model="form.password" placeholder="密码：password" type="password" />
+        <el-input v-model="form.password" placeholder="密码：password" type="password" @keyup.enter="submit" />
       </el-form-item>
       <el-form-item>
         <div class="form-item">
-          <el-checkbox>自动登录</el-checkbox>
+          <el-checkbox v-model="form.autoLogin">自动登录</el-checkbox>
           <el-button type="text">忘记密码</el-button>
         </div>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submit">确定</el-button>
+        <el-button type="primary" @click="submit" class="login-button">确定</el-button>
       </el-form-item>
       <el-form-item>
         <div class="form-item">
@@ -69,6 +72,9 @@ const submit = () => {
     width: 100%;
     display: flex;
     justify-content: space-between;
+  }
+  .login-button {
+    width: 100%;
   }
 
   .login-logo {
