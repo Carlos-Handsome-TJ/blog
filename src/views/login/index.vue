@@ -77,8 +77,19 @@ const showPsd = () => {
       </el-form-item>
       <el-form-item>
         <div class="form-item">
-          <div>
-            其他登录方式
+          <div class="login-type">
+            <p>
+              其他登录方式
+            </p>
+            <span>
+              <i-uiw-alipay />
+            </span>
+            <span>
+              <i-uiw-weixin />
+            </span>
+            <span>
+              <i-uiw-weibo />
+            </span>
           </div>
           <el-button type="text">注册账户</el-button>
         </div>
@@ -105,6 +116,39 @@ const showPsd = () => {
 
   .login-showPsd {
     cursor: pointer;
+  }
+
+  .login-type {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    & > span:nth-child(2):hover {
+      background: var(--icon-aplipay-color);
+    }
+    & > span:nth-child(3):hover {
+      background: var(--icon-weixin-color);
+    }
+    & > span:nth-child(4):hover {
+      background: var(--icon-weibo-color);
+    }
+
+    & > span {
+      display: flex;
+      width: 30px;
+      height: 30px;
+      align-items: center;
+      cursor: pointer;
+      background: var(--icon-color-disable);
+      color: #eee;
+      border-radius: 50%;
+
+      & > svg {
+        flex: 1;
+      }
+    }
+
+
   }
 
   .login-logo {
