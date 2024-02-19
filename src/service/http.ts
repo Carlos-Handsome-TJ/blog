@@ -9,7 +9,8 @@ const http = axios.create({
 })
 
 http.interceptors.request.use(config => {
-  const token: string = ''
+  const userInfo = localStorage.getItem('userInfo') || '{}'
+  const { token }  = JSON.parse(userInfo)?.data || ''
   config.headers.Authorization = token
   return config
 }, err => {

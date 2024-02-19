@@ -1,5 +1,5 @@
 import http from '@/service/http'
 
-export const getHome = () => {
-  return http.get('')
+export const userInfo = () => {
+  return http.get('/user/userInfo')
 }

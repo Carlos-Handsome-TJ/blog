@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import { login } from '@/service/login'
 import { useRouter } from 'vue-router'
 import qs from 'qs'
 import axios from 'axios'
@@ -21,8 +20,14 @@ const form = reactive({
   password: '',
   autoLogin: true
 })
+const showPsd = () => {
+  isShowPsd.value = !isShowPsd.value
+}
+const register = () => {
+  router.push('/user/register')
+}
 const submit = () => {
-  formRef.value.validate((isValid: boolean) => {
+  formRef.value.validate(async (isValid: boolean) => {
     if (isValid) {
       const data = {
         username: form.username,
@@ -34,21 +39,14 @@ const submit = () => {
         data: qs.stringify(data),
         url: '/api/user/login'
       }
-      axios(options).then((res: any) => {
-        if (res.data.code === 0) {
-          formRef.value.resetFields()
-          return ElMessage.success('登录成功')
-        }
-        ElMessage.error('账号或密码错误！')
-      })
+      const resData = await axios(options)
+      if (resData.data.code !== 0) return ElMessage.error('账号或密码错误！')
+      localStorage.setItem('userInfo', JSON.stringify(resData.data))
+      formRef.value.resetFields()
+      await router.push('/home')
+      return ElMessage.success('登录成功')
     }
   })
-}
-const showPsd = () => {
-  isShowPsd.value = !isShowPsd.value
-}
-const register = () => {
-  router.push('/user/register')
 }
 
 </script>
