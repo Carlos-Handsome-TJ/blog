@@ -3,7 +3,7 @@ import { reactive, ref } from 'vue'
 import { login } from '@/service/login'
 
 const formRef = ref()
-
+const isShowPsd = ref(false)
 const rules = reactive({
   username: [
     { required: true, message: '请输入账号', trigger: 'change' }
@@ -18,9 +18,9 @@ const form = reactive({
   autoLogin: true
 })
 const submit = () => {
-  formRef.value.validate(isValid => {
+  formRef.value.validate((isValid: boolean) => {
     if (isValid) {
-      login(form).then(res => {
+      login(form).then((res: any) => {
         if (res.code === 0) {
           return ElMessage.success('登录成功')
         }
@@ -29,17 +29,42 @@ const submit = () => {
     }
   })
 }
-</script>
+const showPsd = () => {
+  isShowPsd.value = !isShowPsd.value
+}
 
+</script>
 <template>
   <div class="login-container">
     <div class="login-logo">logo</div>
     <el-form :model="form" :rules="rules" ref="formRef">
       <el-form-item prop="username">
-        <el-input v-model="form.username" placeholder="账号：username" />
+        <el-input
+          v-model=" form.username"
+          placeholder="账号：username"
+        >
+          <template #prefix>
+            <i-ep-user />
+          </template>
+        </el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input v-model="form.password" placeholder="密码：password" type="password" @keyup.enter="submit" />
+        <el-input
+          v-model="form.password"
+          placeholder="密码：password"
+          :type="isShowPsd ? 'text' : 'password'"
+          @keyup.enter="submit"
+        >
+          <template #prefix>
+            <i-ep-lock />
+          </template>
+          <template #suffix>
+            <el-icon @click="showPsd" class="login-showPsd">
+              <i-ep-view v-if="!isShowPsd" />
+              <i-ep-hide v-else />
+            </el-icon>
+          </template>
+        </el-input>
       </el-form-item>
       <el-form-item>
         <div class="form-item">
@@ -73,8 +98,13 @@ const submit = () => {
     display: flex;
     justify-content: space-between;
   }
+
   .login-button {
     width: 100%;
+  }
+
+  .login-showPsd {
+    cursor: pointer;
   }
 
   .login-logo {

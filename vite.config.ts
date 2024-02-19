@@ -5,6 +5,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 
 export default () => {
   return defineConfig({
@@ -12,11 +14,12 @@ export default () => {
       vue(),
       vueJsx(),
       AutoImport({
-        resolvers: [ElementPlusResolver()]
+        resolvers: [ElementPlusResolver(), IconsResolver()]
       }),
       Components({
-        resolvers: [ElementPlusResolver()]
-      })
+        resolvers: [ElementPlusResolver(), IconsResolver()]
+      }),
+      Icons()
     ],
     resolve: {
       alias: {
