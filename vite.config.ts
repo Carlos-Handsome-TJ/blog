@@ -7,12 +7,20 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import Unocss from 'unocss/vite'
+import { presetUno, presetAttributify, presetIcons } from 'unocss'
 
 export default () => {
   return defineConfig({
     plugins: [
       vue(),
       vueJsx(),
+      Unocss({
+        presets: [
+          presetUno(),
+          presetAttributify(),
+          presetIcons()],
+      }),
       AutoImport({
         resolvers: [ElementPlusResolver(), IconsResolver()]
       }),

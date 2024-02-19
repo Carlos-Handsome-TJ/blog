@@ -59,6 +59,8 @@
   --icon-aplipay-color: #1677ff;
   --icon-weixin-color: #07c160;
   --icon-weibo-color: #ff8200;
+  /* header*/
+  --header-color-text: #61666d;
 }
 
 .dark {

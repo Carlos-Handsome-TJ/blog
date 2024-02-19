@@ -7,6 +7,8 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ElAvatar: typeof import('element-plus/es')['ElAvatar']
+    ElBadge: typeof import('element-plus/es')['ElBadge']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElCol: typeof import('element-plus/es')['ElCol']
@@ -23,6 +25,10 @@ declare module 'vue' {
     IEpUser: typeof import('~icons/ep/user')['default']
     IEpView: typeof import('~icons/ep/view')['default']
     IUiwAlipay: typeof import('~icons/uiw/alipay')['default']
+    IUiwBell: typeof import('~icons/uiw/bell')['default']
+    IUiwFolder: typeof import('~icons/uiw/folder')['default']
+    IUiwNotification: typeof import('~icons/uiw/notification')['default']
+    IUiwTimeO: typeof import('~icons/uiw/time-o')['default']
     IUiwWeibo: typeof import('~icons/uiw/weibo')['default']
     IUiwWeixin: typeof import('~icons/uiw/weixin')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

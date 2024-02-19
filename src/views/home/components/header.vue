@@ -13,21 +13,62 @@ onMounted(() => {
 </script>
 <template>
   <el-row class="header-container">
-    <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">2131</el-col>
-    <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">3123</el-col>
-    <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">321321</el-col>
+    <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">logo</el-col>
+    <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6" class="header-nav-list">
+      <div cursor="pointer">
+        <el-avatar></el-avatar>
+      </div>
+      <div>
+        <el-badge :value="3" class="item">
+          <div class="header-icon">
+            <i-uiw-notification></i-uiw-notification>
+            <span>消息</span>
+          </div>
+        </el-badge>
+      </div>
+      <div class="header-icon">
+        <i-uiw-time-o></i-uiw-time-o>
+        <span>历史</span>
+      </div>
+      <div class="header-icon">
+        <i-uiw-folder></i-uiw-folder>
+        <span>分类</span>
+      </div>
+      <div>
+        <el-button type="primary">投稿</el-button>
+      </div>
+      <div></div>
+      <div></div>
+    </el-col>
   </el-row>
 </template>
 <style lang="scss" scoped>
 .header-container {
   height: 64px;
   width: 100%;
+  box-sizing: border-box;
   box-shadow: 0 2px 4px #00000014;
-  @media screen and (min-width: 1440px) {
+  display: flex;
+  align-items: center;
 
-  }
-  @media screen and (min-width: 800px) and (max-width: 1440px){
+  .header-nav-list {
+    height: 50px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 
+    .header-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      & > span {
+        padding-top: 5px;
+        font-size: 14px;
+        color: var(--header-color-text);
+      }
+    }
   }
 }
 </style>
