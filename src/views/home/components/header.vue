@@ -15,7 +15,14 @@ onMounted(() => {
 </script>
 <template>
   <el-row class="header-container">
-    <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">logo</el-col>
+    <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">
+      <div flex justify-between>
+        <div w-full>logo</div>
+        <div w-2xl>
+          <el-input></el-input>
+        </div>
+      </div>
+    </el-col>
     <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6" class="header-nav-list">
       <div cursor="pointer">
         <el-avatar :src="avatarUrl" />
@@ -42,8 +49,6 @@ onMounted(() => {
           投稿
         </el-button>
       </div>
-      <div></div>
-      <div></div>
     </el-col>
   </el-row>
 </template>
