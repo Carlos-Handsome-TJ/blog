@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 import { userInfo } from '@/service/home'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 
+const avatarUrl: string = ref('')
 const getUserInfo = () => {
   userInfo().then(res => {
-    console.log(res)
+    const { userPic } = res.data
+    avatarUrl.value = userPic
   })
 }
 onMounted(() => {
@@ -16,7 +18,7 @@ onMounted(() => {
     <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">logo</el-col>
     <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6" class="header-nav-list">
       <div cursor="pointer">
-        <el-avatar></el-avatar>
+        <el-avatar :src="avatarUrl" />
       </div>
       <div>
         <el-badge :value="3" class="item">
@@ -35,7 +37,10 @@ onMounted(() => {
         <span>分类</span>
       </div>
       <div>
-        <el-button type="primary">投稿</el-button>
+        <el-button type="primary">
+          <i-ep-upload p-r="5" font-size="5" />
+          投稿
+        </el-button>
       </div>
       <div></div>
       <div></div>
@@ -63,6 +68,7 @@ onMounted(() => {
       flex-direction: column;
       align-items: center;
       cursor: pointer;
+
       & > span {
         padding-top: 5px;
         font-size: 14px;
