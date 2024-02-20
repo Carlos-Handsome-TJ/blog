@@ -71,7 +71,7 @@ const login = () => {
           placeholder="账号：username"
         >
           <template #prefix>
-            <i-ep-user />
+            <i-uiw-user />
           </template>
         </el-input>
       </el-form-item>
@@ -83,7 +83,7 @@ const login = () => {
           @keyup.enter="submit"
         >
           <template #prefix>
-            <i-ep-lock />
+            <i-uiw-lock />
           </template>
           <template #suffix>
             <el-icon @click="showPsd" class="login-showPsd">
@@ -101,7 +101,7 @@ const login = () => {
           @keyup.enter="submit"
         >
           <template #prefix>
-            <i-ep-lock />
+            <i-uiw-lock />
           </template>
           <template #suffix>
             <el-icon @click="showPsd" class="login-showPsd">

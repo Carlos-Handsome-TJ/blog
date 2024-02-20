@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { userInfo } from '@/service/home'
 import { onMounted, ref } from 'vue'
+import Search from '@/views/home/components/search.vue'
 
-const avatarUrl: string = ref('')
+const avatarUrl = ref<string>('')
 const getUserInfo = () => {
   userInfo().then(res => {
     const { userPic } = res.data
@@ -18,8 +19,8 @@ onMounted(() => {
     <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="18">
       <div flex justify-between>
         <div w-full>logo</div>
-        <div w-2xl>
-          <el-input></el-input>
+        <div w-2xl pr-10>
+          <Search />
         </div>
       </div>
     </el-col>

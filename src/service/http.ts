@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from '@/router'
 
 const http = axios.create({
   baseURL: import.meta.env.VITE_BASE_API,
@@ -10,7 +11,7 @@ const http = axios.create({
 
 http.interceptors.request.use(config => {
   const userInfo = localStorage.getItem('userInfo') || '{}'
-  const { token }  = JSON.parse(userInfo)?.data || ''
+  const { token } = JSON.parse(userInfo)?.data || ''
   config.headers.Authorization = token
   return config
 }, err => {
@@ -19,7 +20,12 @@ http.interceptors.request.use(config => {
 http.interceptors.response.use(res => {
   const { data } = res
   return data
-}, err => {
+}, async err => {
+
+  if (err.response.status === 401) {
+    // 登录过期
+    await router.push('/login')
+  }
   return Promise.reject(err)
 })
 
