@@ -15,8 +15,8 @@ onMounted(() => {
 </script>
 <template>
   <el-row>
-    <el-col :span="8"></el-col>
-    <el-col :span="16">
+    <el-col :span="12"></el-col>
+    <el-col :span="12">
       <div class="user-card-container">
         <div flex pr content-center w-full>
           <el-avatar :size="50" :src="avatarUrl"></el-avatar>

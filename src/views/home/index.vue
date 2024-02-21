@@ -1,6 +1,7 @@
 <script lang='ts' setup>
 import Header from '@/views/home/components/header.vue'
 import UserCard from '@/views/home/components/userCard.vue'
+import List from '@/views/home/components/list.vue'
 
 </script>
 <template>
@@ -8,13 +9,13 @@ import UserCard from '@/views/home/components/userCard.vue'
     <Header />
     <div class="home-wrapper" h-full>
       <el-row :gutter="10" pt-2>
-        <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
+        <el-col :xs="6" :sm="6" :md="8" :lg="8" :xl="8">
           <UserCard />
         </el-col>
-        <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
-          <div class="grid-content bg-purple-light"></div>
+        <el-col :xs="12" :sm="12" :md="8" :lg="8" :xl="8">
+          <List v-for="(_, index) in ['', '', '']" :key="index" pb-2 />
         </el-col>
-        <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="6">
+        <el-col :xs="6" :sm="6" :md="8" :lg="8" :xl="8">
           <div class="grid-content bg-purple"></div>
         </el-col>
       </el-row>
@@ -25,6 +26,7 @@ import UserCard from '@/views/home/components/userCard.vue'
 .home-container-wrapper {
   width: 100%;
   height: 100%;
+
   .home-wrapper {
     width: 100%;
     height: 100%;
