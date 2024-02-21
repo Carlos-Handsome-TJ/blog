@@ -61,6 +61,9 @@
   --icon-weibo-color: #ff8200;
   /* header*/
   --header-color-text: #61666d;
+  /* font-color*/
+  --font-color-main: #18191c;
+  --font-color-user-name: rgb(251, 114, 153);
 }
 
 .dark {
