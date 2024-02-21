@@ -13,7 +13,7 @@ import List from '@/views/home/components/list.vue'
           <UserCard />
         </el-col>
         <el-col :xs="12" :sm="12" :md="8" :lg="8" :xl="8">
-          <List v-for="(_, index) in ['', '', '']" :key="index" pb-2 />
+          <List />
         </el-col>
         <el-col :xs="6" :sm="6" :md="8" :lg="8" :xl="8">
           <div class="grid-content bg-purple"></div>
