@@ -68,8 +68,11 @@ onMounted(() => {
           @mouseenter="showCloseTag"
           @mouseleave="hideCloseTag"
         >
-          <i-uiw-circle-close v-if="showCloseIcon" @mousedown="(e: Event) => removeTags(e, item)"
-                              class="search-tag-close" />
+          <i-uiw-circle-close
+            v-if="showCloseIcon"
+            @mousedown="(e: Event) => removeTags(e, item)"
+            class="search-tag-close"
+          />
           {{ item }}
         </el-tag>
       </div>

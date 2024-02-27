@@ -3,13 +3,10 @@ import { ref } from 'vue'
 
 const emptyListArr = ref(5)
 const isLoading = ref<boolean>(true)
-const toggleLoading = () => {
-  isLoading.value = !isLoading.value
-}
+
 </script>
 <template>
   <div class="list-container-wrapper">
-    <el-button @click="toggleLoading">切换状态</el-button>
     <el-skeleton
       :rows="5"
       animated

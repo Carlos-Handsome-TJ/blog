@@ -31,7 +31,7 @@ onMounted(() => {
       <div>
         <el-badge :value="3" class="item">
           <div class="header-icon">
-            <i-uiw-notification></i-uiw-notification>
+            <i-uiw-notification />
             <span>消息</span>
           </div>
         </el-badge>
