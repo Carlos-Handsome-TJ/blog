@@ -4,9 +4,15 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/home',
+      path: '/',
       name: 'Home',
-      component: () => import('@/views/home/index.vue')
+      component: () => import('@/views/home/index.vue'),
+      children: [
+        {
+          path: '/home',
+          component: () => import('@/views/home/index.vue'),
+        }
+      ]
     },
     {
       path: '/login',
